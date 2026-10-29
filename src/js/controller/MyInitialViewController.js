@@ -13,6 +13,7 @@ export default class MyInitialViewController extends mwf.ViewController {
     // TODO-REPEATED: declare custom instance attributes for this controller
 
     constructor() {
+        alert("constructor!")
         super();
 
         var item = new entities.MyEntity();

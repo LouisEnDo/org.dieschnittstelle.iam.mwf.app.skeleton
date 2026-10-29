@@ -2,10 +2,11 @@ const glob = require("glob")
 const path = require("path")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
-const CircularDependencyPlugin = require('circular-dependency-plugin')
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 module.exports = {
     mode: "development",
+    cache: false,
     plugins: [
         new CircularDependencyPlugin({
             // exclude detection of files based on a RegExp

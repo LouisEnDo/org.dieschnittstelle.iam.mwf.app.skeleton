@@ -22,5 +22,28 @@ export class MyEntity extends EntityManager.Entity {
 }
 
 // TODO-REPEATED: add new entity class declarations here
+export class MediaItem extends EntityManager.Entity {
+    title;
+    src;
+    added = Date.now();
+    descriptions;
 
+    constructor(title,src){
+        super();
+        this.title = title;
+        this.src = src;
+    }
+}
+
+export function createRandomMediaItem() {
+    const titles = ["Guter Tag","Bester Tag", "Photoshop", "WapBap", "Hahnenkampf"]
+    const dims = [[100,100],[50,100],[150,200],[200,150],[400,30]]
+
+    const title = titles[Math.floor(Math.random() * titles.length)]
+    const dim = dims[Math.floor(Math.random() * dims.length)]
+
+    return new MediaItem(
+        title,
+        `https://picsum.photos/${dim[0]}/${dim[1]}` );
+}
 

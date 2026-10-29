@@ -12,6 +12,7 @@ import MyApplication from "./MyApplication.js";
 import * as entities from "./model/MyEntities.js";
 /* application libraries: view controllers */
 import MyInitialViewController from "./controller/MyInitialViewController.js";
+import ListViewViewController from "./controller/ListviewViewController.js";
 // TODO-REPEATED: import any further view controllers here
 
 // we export the framework modules required by the application and the application modules required by the framework
@@ -20,8 +21,9 @@ mwf.app.components = {
     GenericDialogTemplateViewController,
     /* application modules */
     MyApplication,
-    MyInitialViewController
+    MyInitialViewController,
     // TODO-REPEATED: export any further view controllers here
+    ListViewViewController,
 }
 
 // then start the application

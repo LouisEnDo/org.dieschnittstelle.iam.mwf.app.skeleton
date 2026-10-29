@@ -26,9 +26,40 @@
 <body data-mwf-application="MyApplication" class="mwf-loading-app">
 
 <!-- TODO-REPEATED: add new views here -->
-<div class="mwf-view mwf-view-initial" data-mwf-viewcontroller="MyInitialViewController">
+<div class="mwf-view mwf-view-initial" data-mwf-viewcontroller="ListViewViewController">
+    <header>
+        <button class="mwf-imgbutton mwf-left-align mwf-img-sandwich"></button>
+        <h1>Medienübersicht</h1>
+        <button class="mwf-imgbutton mwf-right-align mwf-img-plus"></button>
+        <button class="mwf-imgbutton mwf-right-align mwf-img-delete"></button>
+    </header>
+    <main class="mwf-scrollview">
+        <ul class="mwf-listview" 
+        data-mwf-listitem-view="myapp-list-item"
+        data-mwf-listitem-menu="myapp-listItemDialog"
+        >
+            <li class="mwf-listitem mwf-li-title-subtitle mwf-template mwf-databind" data-mwf-templatename="myapp-list-item">
+                <img src="{{src}}"
+                class="mwf-left-align"/>
+                <div class="mwf-left-align mwf-li-titleblock">
+                    <h2>{{title}}</h2>
+                    <h3>{{added}}</h3>
+                </div>
+                <button class="mwf-imgbutton mwf-right-align mwf-img-options-vertical mwf-listitem-menu-control"></button>
+            </li>
+        </ul>
+    </main>
+    <footer>FÜßßßeee</footer>
 </div>
-
+<div class="mwf-listitem-menu mwf-dialog mwf-popup mwf-template mwf-databind" data-mwf-templatename="myapp-listItemDialog">
+<header><h2>{{title}}</h2></header>
+<main>
+    <ul>
+        <li class="mwf-li-singlde-title mwf-menu-item" data-mwf-targetaction="editItem">Editieren</li>
+        <li class="mwf-li-singlde-title mwf-menu-item" data-mwf-targetaction="deleteItem">Löschen</li>
+    </ul>
+</main>
+</div>
 </body>
 
 </html>
