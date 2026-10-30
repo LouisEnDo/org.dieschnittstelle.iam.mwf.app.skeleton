@@ -1,1 +1,7 @@
-/* TODO: add any application specific styling here */
+/* TODO: add any application specific styling here 
+*/
+#myapp-mediaReadview main img {
+    width:100%;
+    display: block;
+    height: auto; 
+}   

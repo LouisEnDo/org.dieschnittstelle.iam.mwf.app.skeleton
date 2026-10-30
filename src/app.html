@@ -38,19 +38,44 @@
         data-mwf-listitem-view="myapp-list-item"
         data-mwf-listitem-menu="myapp-listItemDialog"
         >
-            <li class="mwf-listitem mwf-li-title-subtitle mwf-template mwf-databind" data-mwf-templatename="myapp-list-item">
+            <li 
+            class="mwf-listitem mwf-li-title-subtitle 
+            mwf-template mwf-databind" 
+            data-mwf-templatename="myapp-list-item" 
+            data-mwf-targetview="myapp-mediaReadview"
+            >
                 <img src="{{src}}"
                 class="mwf-left-align"/>
                 <div class="mwf-left-align mwf-li-titleblock">
                     <h2>{{title}}</h2>
-                    <h3>{{added}}</h3>
+                    <h3>{{addedPP}}</h3>
                 </div>
                 <button class="mwf-imgbutton mwf-right-align mwf-img-options-vertical mwf-listitem-menu-control"></button>
             </li>
         </ul>
     </main>
-    <footer>FÜßßßeee</footer>
+    <footer></footer>
 </div>
+
+<div class="mwf-view" id="myapp-mediaReadview" data-mwf-viewcontroller="ReadviewViewController">
+    <div class="mwf-template mwf-databind" data-mwf-templatename="myapp-mediaReadviewTemplate">
+    <header>
+        <button class="mwf-imgbutton mwf-left-align mwf-img-sandwich"></button>
+        <h1 class="mwf-dyncontent">{{item.title}}</h1>
+
+    </header>
+    <main class="mwf-scrollview">
+        <img src="{{item.src}}"/>
+    </main>
+
+    <footer>
+        <button class="mwf-imgbutton mwf-left-align mwf-img-backward mwf-back"></button>
+        <button on-click="deleteItem" class="mwf-imgbutton mwf-right-align mwf-img-delete"></button>
+    </footer>
+    </div>
+</div>
+
+
 <div class="mwf-listitem-menu mwf-dialog mwf-popup mwf-template mwf-databind" data-mwf-templatename="myapp-listItemDialog">
 <header><h2>{{title}}</h2></header>
 <main>

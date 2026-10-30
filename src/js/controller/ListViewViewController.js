@@ -17,13 +17,13 @@ export default class ListViewViewController extends mwf.ViewController {
     constructor() {
         super();
 
-        this.crudops = GenericCRUDImplLocal.newInstance("MediaItem");
+       // this.crudops = GenericCRUDImplLocal.newInstance("MediaItem");
 
         /** 
         this.items = new Array(7).fill(null).map((_) => entities.createRandomMediaItem())
         console.log("items created", this.items)
         */
-       this.crudops.readAll().then(items => this.initialiseListview(items))
+      // this.crudops.readAll().then(items => this.initialiseListview(items))
     }
 
 
@@ -34,20 +34,24 @@ export default class ListViewViewController extends mwf.ViewController {
         itemview.root.querySelector("h3").textContent = itemobj.added
     }
 */
-    onListItemSelected(itemobj, listviewId){
-        alert("Selected item: " + itemobj.title + " with ID " + itemobj._id);
-    }
+    //onListItemSelected(itemobj, listviewId){
+     //   this.nextView("myapp-mediaReadview")    
+    //}
 
     async oncreate(){
         this.root.querySelector("header .mwf-img-plus")
             .onclick = () => {
                 const newItem = entities.createRandomMediaItem();
-                this.crudops.create(newItem).then(created => {
-                    this.addToListview(created)
-                })
+                newItem.create().then(() => {
+                    this.addToListview(newItem)
+                });
             }        
 
-        this.crudops.readAll().then(items => {
+        this.#readAll()
+    }
+
+    #readAll(){
+        entities.MediaItem.readAll().then(items => {
             this.items = items
             this.initialiseListview(items)
         })
@@ -55,16 +59,22 @@ export default class ListViewViewController extends mwf.ViewController {
 
     editItem(item){
         item.title += (" "+ item.title);
-        this.crudops.update(item._id,item)
+        item.update()
             .then(() => {
                 this.updateInListview(item._id,item);
             })
     }
 
     deleteItem(item){
-        this.crudops.delete(item._id)
+        item.delete()
             .then(()=>{
                 this.removeFromListview(item._id);
             })
+    }
+
+    async onresume() {
+        this.#readAll()
+
+        super.onresume()
     }
 }
