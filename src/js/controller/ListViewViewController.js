@@ -41,11 +41,26 @@ export default class ListViewViewController extends mwf.ViewController {
     async oncreate(){
         this.root.querySelector("header .mwf-img-plus")
             .onclick = () => {
-                const newItem = entities.createRandomMediaItem();
-                newItem.create().then(() => {
-                    this.addToListview(newItem)
-                });
-            }        
+                const newItem = entities.createRandomMediaItem()
+                this.showDialog("myapp-editDialogTemplate", {
+                    dialogTitle: "Erstellen",
+                    item: newItem,
+                    actionBindings: {
+                        saveItem:(evt) => {
+                            evt.original.preventDefault();
+                            this.hideDialog();
+                            newItem.create().then((item)=>
+                                this.addToListview(item)
+                            )
+                        },
+                        cancelDialog: (evt) => {
+                            evt.original.preventDefault();
+                            alert("cancelling")
+                            this.hideDialog();
+                        }
+                }
+                });                
+            }       
 
         this.#readAll()
     }
@@ -58,11 +73,24 @@ export default class ListViewViewController extends mwf.ViewController {
     }
 
     editItem(item){
-        item.title += (" "+ item.title);
-        item.update()
-            .then(() => {
-                this.updateInListview(item._id,item);
-            })
+        this.showDialog("myapp-editDialogTemplate",
+            {
+            item: item,
+            dialogTitle: "Editieren",
+            actionBindings: {
+            saveItem:(evt) => {
+                evt.original.preventDefault();
+                this.hideDialog();
+                item.update()
+                .then(() => {
+                    this.updateInListview(item._id,item);
+                })
+            },
+            cancelDialog: (evt) => {
+                evt.original.preventDefault();
+                alert("cancelling")
+                this.hideDialog();
+            }}});
     }
 
     deleteItem(item){
@@ -76,5 +104,14 @@ export default class ListViewViewController extends mwf.ViewController {
         this.#readAll()
 
         super.onresume()
+    }
+
+    async onReturnFromNextView(nextviewid, returnValue, returnStatus){
+        if (nextviewid === "myapp-mediaReadView"){
+            if (returnStatus === "itemDeleted"){
+                const deletedItem = returnValue.item;
+                this.removeFromListview(deletedItem._id)
+            }
+        }
     }
 }

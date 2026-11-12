@@ -34,7 +34,7 @@ export default class ReadviewViewController extends mwf.ViewController {
 
         const viewProxy = this.bindElement("myapp-mediaReadviewTemplate", { item: myItem }, this.root).viewProxy
         viewProxy.bindAction("deleteItem", () => {
-            myItem.delete().then(()=> this.previousView())
+            myItem.delete().then(()=> this.previousView({item: myItem},"itemDeleted"))
         })
 
         super.oncreate()

@@ -85,6 +85,21 @@
     </ul>
 </main>
 </div>
+
+<div class="mwf-dialog mwf-popup mwf-template mwf-databind mwf-view-component" 
+    data-mwf-templatename="myapp-editDialogTemplate"
+    data-mwf-viewcontroller="GenericDialogTemplateViewController">
+    <main>
+        <h2>{{dialogTitle}}</h2>
+        <form on-submit="saveItem">
+            <input value="{{item.title}}" class="mwf-autofocus" name="title" type="text" autocomplete="off" placeholder="Titel"/>
+            <div class="mwf-buttonbar">
+                <button type="button" on-click="cancelDialog" class="mwf-button mwf-left-align">Abbrechen</button>
+                <input type="submit" class="mwf-button mwf-left-align mwf-button-prio" value="Speichern"/>
+            </div>
+        </form>
+    </main>
+</div>
 </body>
 
 </html>
