@@ -88,11 +88,13 @@
 
 <div class="mwf-dialog mwf-popup mwf-template mwf-databind mwf-view-component" 
     data-mwf-templatename="myapp-editDialogTemplate"
-    data-mwf-viewcontroller="GenericDialogTemplateViewController">
+    data-mwf-viewcontroller="EditDialogViewController">
     <main>
         <h2>{{dialogTitle}}</h2>
-        <form on-submit="saveItem">
+        <form on-submit="saveItem" class="myapp-editDialog">
             <input value="{{item.title}}" class="mwf-autofocus" name="title" type="text" autocomplete="off" placeholder="Titel"/>
+            <input type="file" id="myapp-editDIalogFileInput" on-change="onImgFileSelected">
+            <img src="{{item.src}}"/>
             <div class="mwf-buttonbar">
                 <button type="button" on-click="cancelDialog" class="mwf-button mwf-left-align">Abbrechen</button>
                 <input type="submit" class="mwf-button mwf-left-align mwf-button-prio" value="Speichern"/>

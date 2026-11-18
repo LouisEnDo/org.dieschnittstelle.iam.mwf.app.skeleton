@@ -57,7 +57,7 @@ export default class ListViewViewController extends mwf.ViewController {
                             evt.original.preventDefault();
                             alert("cancelling")
                             this.hideDialog();
-                        }
+                        },
                 }
                 });                
             }       

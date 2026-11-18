@@ -14,6 +14,7 @@ import * as entities from "./model/MyEntities.js";
 import MyInitialViewController from "./controller/MyInitialViewController.js";
 import ListViewViewController from "./controller/ListviewViewController.js";
 import ReadviewViewController from "./controller/ReadviewViewController.js";
+import EditDialogViewController from "./controller/EditDialogViewController.js";
 // TODO-REPEATED: import any further view controllers here
 
 // we export the framework modules required by the application and the application modules required by the framework
@@ -26,6 +27,7 @@ mwf.app.components = {
     // TODO-REPEATED: export any further view controllers here
     ListViewViewController,
     ReadviewViewController,
+    EditDialogViewController,
 }
 
 // then start the application

@@ -5,3 +5,8 @@
     display: block;
     height: auto; 
 }   
+
+#myapp-editDialog img {
+    max-height: 300px;
+    max-width: 300px;
+}
